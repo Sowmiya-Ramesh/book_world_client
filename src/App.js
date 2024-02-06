@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Books from  './components/books/Books';
+import MainLayout from './mainLayout/mainLayout';
+import ReturnStatus from './components/returnStatus/ReturnStatus';
+import Member from './components/member/Member';
+import Issuance from './components/issuance/Issuance';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route path="books/" element={<Books />} />
+        <Route path="issuance/" element={<Issuance />} />
+        <Route path="members/" element={<Member />} />
+        <Route path='return-status' element={<ReturnStatus />} />
+      </Route>
+    </Routes>
+  </Router>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,45 @@
+.sideBar {
+    height: 100vh;
+    min-width: 218px;
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(251, 251, 251);
+  
+    .sideBarLogo {
+      padding-left: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer; // Add cursor pointer for clickable logo
+    }
+  
+    .sideBarList {
+      .sideBarRow {
+        list-style-type: none;
+        padding: 16px 30px 16px 0px;
+  
+        .listContainer {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          text-decoration: none;
+  
+          .icon {
+            color: black; // Default link color
+            text-decoration: none; 
+          }
+  
+          .title {
+            color: black; // Default link color
+            text-decoration: none; 
+          }
+  
+          .activeLink .title {
+            color: blue;
+            text-decoration: none;  // Active link color
+          }
+        }
+      }
+    }
+  }
+  

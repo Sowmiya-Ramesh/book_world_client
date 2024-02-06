@@ -1,0 +1,25 @@
+.listPage{
+    margin: 50px 24px 0px 24px;
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+  
+    // Title on the left corner
+    > :first-child {
+      margin-right: auto;
+    }
+  
+    // Add button on the right corner
+    > :last-child {
+      margin-left: auto;
+    }
+  }
+  .tableContainer{
+   margin-top: 50px;
+  }
+
+} 
+  
