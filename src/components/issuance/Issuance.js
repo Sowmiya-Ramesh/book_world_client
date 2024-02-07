@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Issuance = () => {
     const [issuanceList, setIssuanceList] = useState([]);
     const navigate = useNavigate();
-    const [payload, setPayload] = useState({ book_name: '', book_publisher: '' });
+    const [payload, setPayload] = useState({ issuance_member: '', issuance_status: '' });
     const [selectedIssuanceId, setSelectedIssuanceId] = useState(null);
     const [isEditPopupOpen, setEditPopupOpen] = useState(false); // Track the edit popup state
 
@@ -32,8 +32,8 @@ const Issuance = () => {
 
                     if (issuanceData) {
                         setPayload({
-                            // book_name: bookData.book_name || '',
-                            // book_publisher: bookData.book_publisher || '',
+                            issuance_member: issuanceData.issuance_member || '',
+                            issuance_status: issuanceData.issuance_status || '',
                         });
                     } else {
                         console.error('Unexpected response format:', issuanceData);
@@ -53,7 +53,6 @@ const Issuance = () => {
     const updateIssuance = async () => {
         try {
             if (selectedIssuanceId) {
-                // Handle opening the edit popup
                 setEditPopupOpen(true);
             }
         } catch (err) {
@@ -64,22 +63,18 @@ const Issuance = () => {
     };
 
     const handleUpdate = (id, editedData) => {
-        // Handle updating the payload with the edited data
         setPayload({
-            // book_name: editedData.book_name || '',
-            // book_publisher: editedData.book_publisher || '',
-            // Add other fields as needed
+            issuance_member: editedData.issuance_member || '',
+            issuance_status: editedData.issuance_status || '',
         });
 
-        // Now you can proceed with the save changes logic
         try {
             if (selectedIssuanceId) {
                 const updatePayload = {
-                    // Issuance_name: editedData.book_name,
-                    // book_publisher: editedData.book_publisher,
-                    // Add other fields as needed
+                    issuance_member: editedData.issuance_member,
+                    issuance_status: editedData.issuance_status,
                 };
-
+                console.log(editedData)
                 axios.put(`http://localhost:5000/api/issuance/${selectedIssuanceId}`, updatePayload);
                 navigate('/issuance');
                 getIssuanceList()
@@ -88,7 +83,6 @@ const Issuance = () => {
         } catch (err) {
             console.error(err);
         } finally {
-            // Close the edit popup after handling the update
             setEditPopupOpen(false);
         }
     };
@@ -108,7 +102,7 @@ const Issuance = () => {
                 selectedId={selectedIssuanceId}
                 isEditPopupOpen={isEditPopupOpen}
                 setEditPopupOpen={setEditPopupOpen}
-                handleEditUpdate={handleUpdate} // Pass handleUpdate to the TableList component
+                handleEditUpdate={handleUpdate} 
             />
         </div>
     );

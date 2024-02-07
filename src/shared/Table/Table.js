@@ -10,13 +10,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import EditBookPopup from '../EditPage/EditPopup';
+import EditPopup from '../EditPage/EditPopup';
 
-const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, selectedId, isEditPopupOpen, setEditPopupOpen, handleEditUpdate }) => {
+const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, selectedId, isEditPopupOpen, setEditPopupOpen, handleEditUpdate}) => {
 
     const ListColumn = [
         { id: 'book_id', label: title === 'BOOKS' ? 'Book Id' : title === 'ISSUANCE' ? 'Issuance Id' : title === 'PENDING RETURNS' ? 'Issuance Id' : 'Member Id', minWidth: 300 },
-        { id: 'book_name', label: title === 'BOOKS' ? 'Book' : title === 'MEMBER' ? 'Status' : title === 'ISSUANCE' ? 'Issuance Member' : title === 'PENDING RETURNS' ? 'Issuance Member' : 'Member', minWidth: 150 },
+        { id: 'book_name', label: title === 'BOOKS' ? 'Book' : title === 'ISSUANCE' ? 'Issuance Member' : title === 'PENDING RETURNS' ? 'Issuance Member' : 'Member Status', minWidth: 150 },
         { id: 'collection', label: title === 'BOOKS' ? 'Collection' : title === 'ISSUANCE' ? 'Issued By' : title === 'PENDING RETURNS' ? 'Book Name' : 'Email', minWidth: 150 },
         { id: 'category', label: title === 'BOOKS' ? 'Category' : title === 'ISSUANCE' ? 'Issuance Status' : title === 'PENDING RETURNS' ? 'Target Return Date' : 'Phone', minWidth: 150 },
         { id: 'edit', label: title !== 'PENDING RETURNS' ? 'Edit' : '', minWidth: 150 },
@@ -27,7 +27,7 @@ const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, se
             <Paper className='listPage' sx={{ borderRadius: '16px' }}>
                 <div className='header'>
                     <Typography>{title}</Typography>
-                    {title !== 'PENDING RETURNS' ? <Button variant="contained">{addTitle}</Button> : null}
+                    {title !== 'PENDING RETURNS' ? <Button variant="contained" disabled>{addTitle}</Button> : null}
                 </div>
                 <TableContainer className='tableContainer'>
                     <Table aria-label='caption table'>
@@ -73,12 +73,17 @@ const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, se
                 </TableContainer>
             </Paper>
 
-            <EditBookPopup
+            <EditPopup
                 isOpen={isEditPopupOpen}
                 onClose={() => setEditPopupOpen(false)}
-                onUpdate={handleEditUpdate} // Pass handleEditUpdate for the update logic
-                initialData={{ book_name: '', book_publisher: '' }} // Initial data for the popup
+                onUpdate={handleEditUpdate} 
+                initialData= {title === 'BOOKS' ? { book_name: '', book_publisher: '' } : title === 'ISSUANCE' ? {issuance_member:'', issuance_status:''} : {mem_name:'', mem_email:''}}
                 id={selectedId}
+                title={title === 'BOOKS' ? 'Edit Book' : title === 'ISSUANCE' ? 'Edit Issuance' : 'Edit Member'}
+                labelName1={title === 'BOOKS' ? 'Book Name' : title === 'ISSUANCE' ? 'Issuance Member' : 'Member Name'}
+                name1={title === 'BOOKS' ? 'book_name' : title === 'ISSUANCE' ? 'issuance_member' : 'mem_name'}
+                labelName2={title === 'BOOKS' ? 'Book Publisher' : title === 'ISSUANCE' ? 'Issuance Status' : 'Email'}
+                name2={title === 'BOOKS' ? 'book_publisher' : title === 'ISSUANCE' ? 'issuance_status' : 'mem_email'}
             />
         </>
     );

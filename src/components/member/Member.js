@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Members = () => {
     const [memberList, setMemberList] = useState([]);
     const navigate = useNavigate();
-    const [payload, setPayload] = useState({ member_name: '', member_publisher: '' });
+    const [payload, setPayload] = useState({ mem_name: '', mem_email: '' });
     const [selectedMemberId, setSelectedMemberId] = useState(null);
     const [isEditPopupOpen, setEditPopupOpen] = useState(false); // Track the edit popup state
 
@@ -32,8 +32,8 @@ const Members = () => {
 
                     if (memberData) {
                         setPayload({
-                            book_name: memberData.book_name || '',
-                            // member_publisher: memberData.member_publisher || '',
+                           mem_name: memberData.mem_name || '',
+                           mem_email: memberData.mem_email || '',
                         });
                     } else {
                         console.error('Unexpected response format:', memberData);
@@ -49,11 +49,11 @@ const Members = () => {
         }
     };
     console.log(payload);
+    console.log(selectedMemberId);
 
     const updateMember = async () => {
         try {
             if (selectedMemberId) {
-                // Handle opening the edit popup
                 setEditPopupOpen(true);
             }
         } catch (err) {
@@ -64,21 +64,17 @@ const Members = () => {
     };
 
     const handleUpdate = (id, editedData) => {
-        // Handle updating the payload with the edited data
         setPayload({
-            book_name: editedData.book_name || '',
-            // book_publisher: editedData.book_publisher || '',
-            // Add other fields as needed
+            mem_name: editedData.mem_name || '',
+            mem_email: editedData. mem_email || '',
         });
-
-        // Now you can proceed with the save changes logic
         try {
             if (selectedMemberId) {
                 const updatePayload = {
-                    book_name: editedData.book_name,
-                    // book_publisher: editedData.book_publisher,
-                    // Add other fields as needed
+                    mem_name: editedData.mem_name,
+                    mem_email: editedData. mem_email,
                 };
+                console.log(editedData)
 
                 axios.put(`http://localhost:5000/api/members/${selectedMemberId}`, updatePayload);
                 navigate('/members');
@@ -88,7 +84,6 @@ const Members = () => {
         } catch (err) {
             console.error(err);
         } finally {
-            // Close the edit popup after handling the update
             setEditPopupOpen(false);
         }
     };
@@ -108,7 +103,7 @@ const Members = () => {
                 selectedId={selectedMemberId}
                 isEditPopupOpen={isEditPopupOpen}
                 setEditPopupOpen={setEditPopupOpen}
-                handleEditUpdate={handleUpdate} // Pass handleUpdate to the TableList component
+                handleEditUpdate={handleUpdate} 
             />
         </div>
     );

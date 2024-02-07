@@ -2,7 +2,7 @@ import './App.scss'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Books from  './components/books/Books';
 import MainLayout from './mainLayout/mainLayout';
-import ReturnStatus from './components/returnStatus/ReturnStatus';
+import ReturnStatus from './components/pendingReturns/PendingReturns';
 import Member from './components/member/Member';
 import Issuance from './components/issuance/Issuance';
 

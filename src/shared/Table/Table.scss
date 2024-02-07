@@ -7,12 +7,10 @@
     padding: 10px;
     background-color: #f0f0f0;
   
-    // Title on the left corner
     > :first-child {
       margin-right: auto;
     }
   
-    // Add button on the right corner
     > :last-child {
       margin-left: auto;
     }

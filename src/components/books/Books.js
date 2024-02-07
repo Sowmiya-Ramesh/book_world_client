@@ -8,7 +8,7 @@ const Books = () => {
     const navigate = useNavigate();
     const [payload, setPayload] = useState({ book_name: '', book_publisher: '' });
     const [selectedBookId, setSelectedBookId] = useState(null);
-    const [isEditPopupOpen, setEditPopupOpen] = useState(false); // Track the edit popup state
+    const [isEditPopupOpen, setEditPopupOpen] = useState(false); 
 
     const getBooksList = async () => {
         try {
@@ -64,20 +64,18 @@ const Books = () => {
     };
 
     const handleUpdate = (id, editedData) => {
-        // Handle updating the payload with the edited data
         setPayload({
             book_name: editedData.book_name || '',
             book_publisher: editedData.book_publisher || '',
-            // Add other fields as needed
+         
         });
 
-        // Now you can proceed with the save changes logic
         try {
             if (selectedBookId) {
                 const updatePayload = {
                     book_name: editedData.book_name,
                     book_publisher: editedData.book_publisher,
-                    // Add other fields as needed
+                   
                 };
 
                 axios.put(`http://localhost:5000/api/books/${selectedBookId}`, updatePayload);
@@ -88,7 +86,6 @@ const Books = () => {
         } catch (err) {
             console.error(err);
         } finally {
-            // Close the edit popup after handling the update
             setEditPopupOpen(false);
         }
     };
@@ -108,7 +105,7 @@ const Books = () => {
                 selectedId={selectedBookId}
                 isEditPopupOpen={isEditPopupOpen}
                 setEditPopupOpen={setEditPopupOpen}
-                handleEditUpdate={handleUpdate} // Pass handleUpdate to the TableList component
+                handleEditUpdate={handleUpdate} 
             />
         </div>
     );

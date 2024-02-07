@@ -10,7 +10,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      cursor: pointer; // Add cursor pointer for clickable logo
+      cursor: pointer; 
     }
   
     .sideBarList {
@@ -25,18 +25,18 @@
           text-decoration: none;
   
           .icon {
-            color: black; // Default link color
+            color: black; 
             text-decoration: none; 
           }
   
           .title {
-            color: black; // Default link color
+            color: black; 
             text-decoration: none; 
           }
   
           .activeLink .title {
             color: blue;
-            text-decoration: none;  // Active link color
+            text-decoration: none;  
           }
         }
       }

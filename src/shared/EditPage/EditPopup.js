@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
 
-const EditBookPopup = ({ isOpen, onClose, onUpdate, initialData, id }) => {
+const EditPopup = ({ isOpen, onClose, onUpdate, initialData, id ,title, labelName1, name1, labelName2, name2}) => {
     const [editedData, setEditedData] = useState(initialData);
 
     const handleInputChange = (e) => {
@@ -19,19 +19,19 @@ const EditBookPopup = ({ isOpen, onClose, onUpdate, initialData, id }) => {
 
     return (
         <Dialog open={isOpen} onClose={onClose}>
-            <DialogTitle>Edit Book</DialogTitle>
+            <DialogTitle>{title}</DialogTitle>
             <DialogContent>
                 <TextField
-                    label="Book Name"
-                    name="book_name"
+                    label={labelName1}
+                    name={name1}
                     value={editedData.book_name}
                     onChange={handleInputChange}
                     fullWidth
                     margin="normal"
                 />
                 <TextField
-                    label="Book Publisher"
-                    name="book_publisher"
+                    label={labelName2}
+                    name={name2}
                     value={editedData.book_publisher}
                     onChange={handleInputChange}
                     fullWidth
@@ -50,4 +50,4 @@ const EditBookPopup = ({ isOpen, onClose, onUpdate, initialData, id }) => {
     );
 };
 
-export default EditBookPopup;
+export default EditPopup;
