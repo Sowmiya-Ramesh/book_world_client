@@ -1,12 +1,14 @@
+@import 'variables';
+
 .sideBar {
     height: 100vh;
     min-width: 218px;
     position: fixed;
     z-index: 1;
-    background-color: rgb(251, 251, 251);
+    background-color: $primary-color;
   
     .sideBarLogo {
-      padding-left: 40px;
+      padding-left: 20px;
       display: flex;
       align-items: center;
       gap: 20px;
@@ -35,7 +37,7 @@
           }
   
           .activeLink .title {
-            color: blue;
+            color: $primary-color;
             text-decoration: none;  
           }
         }

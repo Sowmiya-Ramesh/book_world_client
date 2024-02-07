@@ -1,4 +1,3 @@
-// ReturnStatus.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TableList from '../../shared/Table/Table';
@@ -11,6 +10,7 @@ const ReturnStatus = () => {
         fetchPendingReturns();
     }, [givenDay]);
 
+    // ReturnStatus of the pending books
     const fetchPendingReturns = async () => {
         try {
             const [booksResponse, membersResponse, issuancesResponse] = await Promise.all([
@@ -48,7 +48,7 @@ const ReturnStatus = () => {
             console.error('Error fetching pending returns:', error);
         }
     };
-console.log(pendingReturns)
+
     return (
         <div>
             <TableList

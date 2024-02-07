@@ -8,8 +8,7 @@ const Books = () => {
     const navigate = useNavigate();
     const [payload, setPayload] = useState({ book_name: '', book_publisher: '' });
     const [selectedBookId, setSelectedBookId] = useState(null);
-    const [isEditPopupOpen, setEditPopupOpen] = useState(false); 
-
+    const [isEditPopupOpen, setEditPopupOpen] = useState(false);
     const getBooksList = async () => {
         try {
             const response = await fetch("http://localhost:5000/api/books");
@@ -44,8 +43,6 @@ const Books = () => {
             }
         } catch (err) {
             console.error('Error fetching book data:', err);
-        } finally {
-            //   setShowLoader(false);
         }
     };
     console.log(payload);
@@ -53,13 +50,10 @@ const Books = () => {
     const updateBook = async () => {
         try {
             if (selectedBookId) {
-                // Handle opening the edit popup
                 setEditPopupOpen(true);
             }
         } catch (err) {
             console.error(err);
-        } finally {
-            // setShowLoader(false);
         }
     };
 
@@ -67,7 +61,7 @@ const Books = () => {
         setPayload({
             book_name: editedData.book_name || '',
             book_publisher: editedData.book_publisher || '',
-         
+
         });
 
         try {
@@ -75,7 +69,7 @@ const Books = () => {
                 const updatePayload = {
                     book_name: editedData.book_name,
                     book_publisher: editedData.book_publisher,
-                   
+
                 };
 
                 axios.put(`http://localhost:5000/api/books/${selectedBookId}`, updatePayload);
@@ -96,17 +90,17 @@ const Books = () => {
 
     return (
         <div>
-            <TableList
-                tableList={bookList}
-                title={'BOOKS'}
-                addTitle={'ADD BOOK'}
-                handleUpdate={updateBook}
-                setSelectedId={setSelectedBookId}
-                selectedId={selectedBookId}
-                isEditPopupOpen={isEditPopupOpen}
-                setEditPopupOpen={setEditPopupOpen}
-                handleEditUpdate={handleUpdate} 
-            />
+                <TableList
+                    tableList={bookList}
+                    title={'BOOKS'}
+                    addTitle={'ADD BOOK'}
+                    handleUpdate={updateBook}
+                    setSelectedId={setSelectedBookId}
+                    selectedId={selectedBookId}
+                    isEditPopupOpen={isEditPopupOpen}
+                    setEditPopupOpen={setEditPopupOpen}
+                    handleEditUpdate={handleUpdate}
+                />
         </div>
     );
 };

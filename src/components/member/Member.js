@@ -8,7 +8,7 @@ const Members = () => {
     const navigate = useNavigate();
     const [payload, setPayload] = useState({ mem_name: '', mem_email: '' });
     const [selectedMemberId, setSelectedMemberId] = useState(null);
-    const [isEditPopupOpen, setEditPopupOpen] = useState(false); // Track the edit popup state
+    const [isEditPopupOpen, setEditPopupOpen] = useState(false); 
 
     const getMembersList = async () => {
         try {
@@ -44,8 +44,6 @@ const Members = () => {
             }
         } catch (err) {
             console.error('Error fetching member data:', err);
-        } finally {
-            //   setShowLoader(false);
         }
     };
     console.log(payload);
@@ -58,8 +56,6 @@ const Members = () => {
             }
         } catch (err) {
             console.error(err);
-        } finally {
-            // setShowLoader(false);
         }
     };
 

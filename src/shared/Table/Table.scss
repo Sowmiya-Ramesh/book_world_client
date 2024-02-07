@@ -1,3 +1,5 @@
+
+@import '../../variables';
 .listPage{
     margin: 50px 24px 0px 24px;
     .header {
@@ -5,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: $primary-color;
   
     > :first-child {
       margin-right: auto;
@@ -17,6 +19,17 @@
   }
   .tableContainer{
    margin-top: 50px;
+   .table{
+    .tableHead{
+    }
+    .tableBody{
+        .tableRow{
+            .button{
+                color: $primary-color
+            }
+        }
+    }
+   }
   }
 
 } 

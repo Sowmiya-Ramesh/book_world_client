@@ -8,7 +8,7 @@ const Issuance = () => {
     const navigate = useNavigate();
     const [payload, setPayload] = useState({ issuance_member: '', issuance_status: '' });
     const [selectedIssuanceId, setSelectedIssuanceId] = useState(null);
-    const [isEditPopupOpen, setEditPopupOpen] = useState(false); // Track the edit popup state
+    const [isEditPopupOpen, setEditPopupOpen] = useState(false); 
 
     const getIssuanceList = async () => {
         try {
@@ -44,8 +44,6 @@ const Issuance = () => {
             }
         } catch (err) {
             console.error('Error fetching issuance data:', err);
-        } finally {
-            //   setShowLoader(false);
         }
     };
     console.log(payload);
@@ -57,8 +55,6 @@ const Issuance = () => {
             }
         } catch (err) {
             console.error(err);
-        } finally {
-            // setShowLoader(false);
         }
     };
 

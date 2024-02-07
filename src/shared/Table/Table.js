@@ -26,12 +26,12 @@ const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, se
         <>
             <Paper className='listPage' sx={{ borderRadius: '16px' }}>
                 <div className='header'>
-                    <Typography>{title}</Typography>
+                    <Typography variant='h5'>{title}</Typography>
                     {title !== 'PENDING RETURNS' ? <Button variant="contained" disabled>{addTitle}</Button> : null}
                 </div>
                 <TableContainer className='tableContainer'>
                     <Table aria-label='caption table'>
-                        <TableHead>
+                        <TableHead className='tableHead'>
                             <TableRow>
                                 {ListColumn.map((column) => (
                                     <TableCell key={column.id} align={column.align}>
@@ -42,10 +42,10 @@ const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, se
                                 ))}
                             </TableRow>
                         </TableHead>
-                        <TableBody>
+                        <TableBody className='tableBody'>
                             {tableList.map((obj) => (
-                                <TableRow hover key={obj._id}>
-                                    <TableCell>
+                                <TableRow hover key={obj._id} className='tableRow'>
+                                    <TableCell >
                                         <Typography>{title === 'BOOKS' ? obj?.book_id : title === 'ISSUANCE' ? obj?.book_id : title === 'PENDING RETURNS' ? obj?.issuance_id : obj?.mem_id?.member_id}</Typography>
                                     </TableCell>
                                     <TableCell>
@@ -59,8 +59,7 @@ const TableList = ({ tableList, title, addTitle, handleUpdate, setSelectedId, se
                                         <Typography>{title === 'BOOKS' ? obj?.book_cat_id?.cat_name : title === 'ISSUANCE' ? obj?.issuance_status : title === 'PENDING RETURNS' ? obj?.target_return_date.split('T')[0] : obj?.mem_phone}</Typography>
                                     </TableCell>
                                     {title !== 'PENDING RETURNS' ? <TableCell>
-                                        <Button variant="contained" onClick={() => {
-                                            // if(title === 'BOOKS')
+                                        <Button variant="contained"  className='button' onClick={() => {
                                             setSelectedId(obj?._id);
                                             setEditPopupOpen(true);
 

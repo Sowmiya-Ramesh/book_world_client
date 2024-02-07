@@ -8,7 +8,7 @@ const MainLayout = () => {
   return (
     <>
       <Grid container spacing={1} columnSpacing={{ xs: 2 }} className='grid'>
-        <Grid item md={2}>
+        <Grid item md={2} style={{listStyleType:'none'}}>
           <Sidebar />
         </Grid>
         <Grid style={{ marginLeft: '3%' }}></Grid>
